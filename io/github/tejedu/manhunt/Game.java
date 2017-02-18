@@ -123,4 +123,19 @@ public class Game {
 			surviveTimer.cancel();
 		}
 	}
+	
+	// returns time left in either only minutes left or, if under 120 seconds, seconds left
+	// examples: 
+	// 	if 125 seconds left, it would return '2 minutes' 
+	public String getSurviveTimer() {
+		String timeLeft;
+		if(surviveTimer > 120) {
+			surviveTimer = surviveTimer / 60;
+			timeleft = surviveTimer + " minutes ";
+			return timeLeft;
+		}
+		else {
+			timeleft = surviveTimer + " seconds ";
+			return timeLeft;
+		}
 }
