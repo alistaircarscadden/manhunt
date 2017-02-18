@@ -36,6 +36,8 @@ public class ManHuntCommandExecutor implements CommandExecutor {
 					cmdTest(sender, argsSubset);
 				else if (args[0].equalsIgnoreCase("mhc"))
 					cmdMhc(sender, argsSubset);
+				else if (args[0].equalsIgnoreCase("time"))
+					cmdTimeLeft(sender, argsSubset);
 			}
 		}
 		return true;
@@ -99,6 +101,15 @@ public class ManHuntCommandExecutor implements CommandExecutor {
 		if (sender instanceof Player) {
 			Player p = (Player) sender;
 			p.getInventory().addItem(is);
+		}
+	}
+	
+	private void cmdTimeLeft(CommandSender sender) {
+		if (plugin.game != null && plugin.game.target instanceof Player) {
+			sender.sendMessage(plugin.highlightColor + plugin.game.getSurviveTimer() 
+					+ ChatColor.RESET + " left to catch "
+					+ plugin.highlightColor + ChatColor.ITALIC + plugin.game.target.getDisplayName() 
+					+ ChatColor.RESET + "!");
 		}
 	}
 }
